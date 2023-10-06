@@ -41,23 +41,38 @@ del() {
     echo "$name deleted"
 }
 
+update(){
+    echo 'enter the name'
+    read old_name;
+    echo 'enter new name'
+    read new_name;
+    echo 'enter new number'
+    read new_no;
+
+    sed -i "s/$old_name-.*$/$new_name-$new_no/g" $file
+
+    echo "$old_name updated"
+}
+
 while [ 1 -gt 0 ]; do
     echo "Select the Opetion"
     echo "1. create"
     echo "2. insert"
-    echo "3. display"
-    echo "4. find"
-    echo "5. delete"
-    echo "6. exit"
+    echo "3. update"
+    echo "4. display"
+    echo "5. find"
+    echo "6. delete"
+    echo "7. exit"
     echo '**************'
     read choice
     case "${choice}" in
     1) create ;;
     2) insert ;;
-    3) display ;;
-    4) find ;;
-    5) del ;;
-    6) exit 1 ;;
+    3) update ;;
+    4) display ;;
+    5) find ;;
+    6) del ;;
+    7) exit 1 ;;
     *) echo"wrong choice" ;;
     esac
     echo '**************'
